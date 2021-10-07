@@ -5,15 +5,15 @@ class CountdownTimer {
   }
 }
 
-const newCountDownTimer = new CountdownTimer({
+const countDownTimer = new CountdownTimer({
   selector: "#timer-1",
   targetDate: new Date("<Mar 11, 2022"),
 });
 
-const timerSelector = document.querySelector(newCountDownTimer.selector);
+const timerSelector = document.querySelector(countDownTimer.selector);
 
-const timerInterval = setInterval(() => {
-  const time = newCountDownTimer.targetDate - new Date();
+const intervalId = setInterval(() => {
+  const time = countDownTimer.targetDate - new Date();
 
   const days = Math.floor(time / (1000 * 60 * 60 * 24));
   const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -24,4 +24,8 @@ const timerInterval = setInterval(() => {
   timerSelector.querySelector('[data-value="hours"]').textContent = hours;
   timerSelector.querySelector('[data-value="mins"]').textContent = mins;
   timerSelector.querySelector('[data-value="secs"]').textContent = secs;
+
+  if (time < 0) {
+    clearInterval(intervalId);
+  }
 }, 1000);
