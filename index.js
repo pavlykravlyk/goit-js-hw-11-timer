@@ -12,7 +12,7 @@ class CountdownTimer {
     const mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((time % (1000 * 60)) / 1000);
 
-    const timerSelector = document.querySelector(countDownTimer.selector);
+    const timerSelector = document.querySelector(this.selector);
 
     timerSelector.querySelector('[data-value="days"]').textContent = days;
     timerSelector.querySelector('[data-value="hours"]').textContent = hours;
